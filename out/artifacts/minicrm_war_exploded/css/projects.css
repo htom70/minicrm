@@ -1,0 +1,58 @@
+@charset "ISO-8859-2";
+
+.box {
+	float: left;
+	width: 50%;
+	height: 100%;
+	background: #f1f1f1;
+}
+
+.left-side {
+	float: left;
+	min-width: 100%;
+}
+
+.content {
+	height: 80vh;
+	width: 100%;
+	color: black;
+	font-weight: bolder;
+}
+
+.footer {
+	width: 100%;
+	background: #f1f1f1;
+}
+
+.z-listbox-body table th, .z-listbox-body table td {
+	background: aliceblue;
+	font-weight: bolder;
+}
+
+.z-listbox-body {
+	background: aliceblue;
+}
+
+td .z-hbox-separator {
+	background: #f1f1f1;
+}
+
+.footer>.z-hlayout {
+	display: table;
+	width: 50%;
+	margin: auto;
+	margin-top: 2%;
+}
+
+.z-div, .right-side {
+	background: #f1f1f1;
+}
+
+.z-messagebox-icon.z-messagebox-error.z-div {
+    background: #f1f1f1;
+    background-image: url(/miniCRM_uj/zkau/web/aa660491/zul/img/msgbox/stop-btn.png);
+}
+
+td.z-splitter-outer {
+	background: #f1f1f1 !important;
+}

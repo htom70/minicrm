@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="ISO-8859-2"?>
+<?taglib uri="http://www.zkoss.org/dsp/web/core" prefix="c" ?>
+<?init class="user.minicrm.zk.util.AuthInitiator"?>
+<zk>
+	<vlayout viewModel="@id('vm') @init('user.minicrm.zk.model.UsersViewModel')">
+		<listbox height="700px"  
+			model="@bind(vm.userList)" selectedItem="@bind(vm.selectedUser)">
+			<auxhead >
+				<auxheader label="Felhasználók" colspan="5"
+					align="center" />
+			</auxhead>
+			<listhead sizable="true" >
+				<listheader  label="Id" width="3%" />
+				<listheader  label="Név" />
+				<listheader  label="Email" />
+				<listheader  label="Jelszó" />
+				<listheader  label="Szerepkör" />
+			</listhead>
+			<template name="model" >
+				<listitem>
+					<listcell label="${each.id}" />
+					<listcell style="text-align:left" label="${each.fullName}" />
+					<listcell style="text-align:left" label="${each.email}" />
+					<listcell style="text-align:left" label="${each.password}" />
+					<listcell style="text-align:left" label="${each.role}" />
+				</listitem>
+			</template>
+		</listbox>
+		<hlayout style="overflow: visible;">
+			<button label="Új felhasználó"
+				onClick="@command('showDialog', page='/pages/add_user.zul')"
+				style="font-weight: bold;" />
+			<button label="Módosítás"
+				disabled="@load(vm.selectedUser eq null)"
+				onClick="@command('showDialog', page='/pages/modify_user.zul')"
+				style="font-weight: bold;" />
+			<button label="Törlés"
+				disabled="@load(vm.selectedUser eq null)"
+				onClick="@command('showDialog', page='/pages/delete_user.zul')"
+				style="font-weight: bold;" />
+		</hlayout>
+		<include src="@bind(vm.dialogPage)" />
+	</vlayout>
+</zk>

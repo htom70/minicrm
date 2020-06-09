@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="ISO-8859-2"?>
+<?taglib uri="http://www.zkoss.org/dsp/web/core" prefix="c" ?>
+<?init class="user.minicrm.zk.util.AuthInitiator"?>
+<zk>
+	<window title="Csatolmány törlése" visible="true" mode="modal"
+		width="400px" height="160px" minimizable="false" border="normal"
+		position="center,center" closable="true"
+		action="show: slideDown;hide: slideUp"
+		onClose="@command('showPopup', page='/pages/empty.zul')">
+		<groupbox height="100%" width="100%">
+			<hlayout style="text-align:center;">
+				<label hflex="1" style="font-size:16px;"
+					value="A feltöltött csatolmány véglegesen törölve lesz.Biztos a törlésben?">
+				</label>
+			</hlayout>
+
+			<separator spacing="30px"></separator>
+			<hlayout
+				style="text-align:center; position: relative; bottom: 20px;"
+				spacing="10px">
+				<button label="Igen"
+					onClick="@command('deleteAttachmentFromNewIssue', page='/pages/empty.zul')"
+					style="font-weight: bold;" />
+				<button label="Nem"
+					onClick="@command('showPopup', page='/pages/empty.zul')"
+					style="font-weight: bold;" />
+			</hlayout>
+		</groupbox>
+	</window>
+</zk>

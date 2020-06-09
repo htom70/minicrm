@@ -1,0 +1,58 @@
+<component name="libraryTable">
+  <library name="lib">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/WEB-INF/lib/zk_elinez.jar!/" />
+      <root url="jar://$PROJECT_DIR$/WEB-INF/lib/zk_eplotz.jar!/" />
+      <root url="jar://$PROJECT_DIR$/WEB-INF/lib/zk_gmapsz.jar!/" />
+      <root url="jar://$PROJECT_DIR$/WEB-INF/lib/zml.jar!/" />
+      <root url="jar://$PROJECT_DIR$/WEB-INF/lib/zk_monitor.jar!/" />
+      <root url="jar://$PROJECT_DIR$/WEB-INF/lib/commons-io.jar!/" />
+      <root url="jar://$PROJECT_DIR$/WEB-INF/lib/zk_zuljsp.jar!/" />
+      <root url="jar://$PROJECT_DIR$/WEB-INF/lib/commons-fileupload.jar!/" />
+      <root url="jar://$PROJECT_DIR$/WEB-INF/lib/zuti.jar!/" />
+      <root url="jar://$PROJECT_DIR$/WEB-INF/lib/zweb.jar!/" />
+      <root url="jar://$PROJECT_DIR$/WEB-INF/lib/zkplus.jar!/" />
+      <root url="jar://$PROJECT_DIR$/WEB-INF/lib/zk_jackson-core.jar!/" />
+      <root url="jar://$PROJECT_DIR$/WEB-INF/lib/zk_jackson-databind.jar!/" />
+      <root url="jar://$PROJECT_DIR$/WEB-INF/lib/tika-app-1.16.jar!/" />
+      <root url="jar://$PROJECT_DIR$/WEB-INF/lib/openjpa-all-2.4.2.jar!/" />
+      <root url="jar://$PROJECT_DIR$/WEB-INF/lib/zk_shchart.jar!/" />
+      <root url="jar://$PROJECT_DIR$/WEB-INF/lib/commons-codec.jar!/" />
+      <root url="jar://$PROJECT_DIR$/WEB-INF/lib/zk_jasperreports.jar!/" />
+      <root url="jar://$PROJECT_DIR$/WEB-INF/lib/zk_jfreechart.jar!/" />
+      <root url="jar://$PROJECT_DIR$/WEB-INF/lib/zul.jar!/" />
+      <root url="jar://$PROJECT_DIR$/WEB-INF/lib/zsoup.jar!/" />
+      <root url="jar://$PROJECT_DIR$/WEB-INF/lib/sapphire.jar!/" />
+      <root url="jar://$PROJECT_DIR$/WEB-INF/lib/mysql-connector-java-5.1.44-bin.jar!/" />
+      <root url="jar://$PROJECT_DIR$/WEB-INF/lib/zk_javassist.jar!/" />
+      <root url="jar://$PROJECT_DIR$/WEB-INF/lib/slf4j-api.jar!/" />
+      <root url="jar://$PROJECT_DIR$/WEB-INF/lib/zk_Filters.jar!/" />
+      <root url="jar://$PROJECT_DIR$/WEB-INF/lib/zcommon.jar!/" />
+      <root url="jar://$PROJECT_DIR$/WEB-INF/lib/zk_psz.jar!/" />
+      <root url="jar://$PROJECT_DIR$/WEB-INF/lib/zk_timelinez.jar!/" />
+      <root url="jar://$PROJECT_DIR$/WEB-INF/lib/zk_silvertail.jar!/" />
+      <root url="jar://$PROJECT_DIR$/WEB-INF/lib/zk_jackson-annotations.jar!/" />
+      <root url="jar://$PROJECT_DIR$/WEB-INF/lib/zk_timeplotz.jar!/" />
+      <root url="jar://$PROJECT_DIR$/WEB-INF/lib/zkmax.jar!/" />
+      <root url="jar://$PROJECT_DIR$/WEB-INF/lib/zk_bsh.jar!/" />
+      <root url="jar://$PROJECT_DIR$/WEB-INF/lib/zk_jcommon.jar!/" />
+      <root url="jar://$PROJECT_DIR$/WEB-INF/lib/commons-logging.jar!/" />
+      <root url="jar://$PROJECT_DIR$/WEB-INF/lib/zk_sapphire.jar!/" />
+      <root url="jar://$PROJECT_DIR$/WEB-INF/lib/zkbind.jar!/" />
+      <root url="jar://$PROJECT_DIR$/WEB-INF/lib/zk.jar!/" />
+      <root url="jar://$PROJECT_DIR$/WEB-INF/lib/bsh.jar!/" />
+      <root url="jar://$PROJECT_DIR$/WEB-INF/lib/zkex_r.jar!/" />
+      <root url="jar://$PROJECT_DIR$/WEB-INF/lib/zhtml.jar!/" />
+      <root url="jar://$PROJECT_DIR$/WEB-INF/lib/log4j-1.2.17.jar!/" />
+      <root url="jar://$PROJECT_DIR$/WEB-INF/lib/zk_jsp.jar!/" />
+      <root url="jar://$PROJECT_DIR$/WEB-INF/lib/flashchart.jar!/" />
+      <root url="jar://$PROJECT_DIR$/WEB-INF/lib/silvertail.jar!/" />
+      <root url="jar://$PROJECT_DIR$/WEB-INF/lib/slf4j-jdk14.jar!/" />
+      <root url="jar://$PROJECT_DIR$/WEB-INF/lib/zk_commons-collections.jar!/" />
+      <root url="jar://$PROJECT_DIR$/WEB-INF/lib/zk_flashchart.jar!/" />
+      <root url="jar://$PROJECT_DIR$/WEB-INF/lib/zel.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

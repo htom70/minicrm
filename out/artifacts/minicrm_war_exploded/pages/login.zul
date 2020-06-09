@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="ISO-8859-2"?>
+<?page title="CRM rendszer"?>
+<zk>
+<style src="/css/style.css" />
+	<window style="width:100%;height:100%" border="none"
+		viewModel="@id('vm') @init('user.minicrm.zk.model.LoginViewModel')">
+		
+		<div style="display:flex;align-items:center;width:100%;height:100%;background:white;">
+			<div sclass=" grad" style="border: 3px solid #118eff;
+	border-radius: 5px;
+	margin: 0 auto;
+	width: 500px;">
+				<label
+					style="text-align: center;display: block;float:none;padding: 30px 0 0 0;"
+					value="MiniCRM bejelentkezés" id="title">
+				</label>
+				<groupbox width="80%" style="margin:auto"
+					contentSclass="grad" mold="3d" contentStyle="border:0">
+					<separator spacing="20px"></separator>
+					<hlayout width="100%" >
+						<label hflex="2" sclass="text"
+							value="Felhasználó:" />
+						<textbox hflex="5" value="@save(vm.name)" type="text" id="username"/>
+					</hlayout>
+					<separator spacing="10px"></separator>
+					<hlayout >
+						<label hflex="2" sclass="text" value="Jelszó:" />
+						<textbox hflex="5" value=" @save(vm.password)"
+							type="password" id="password" />
+					</hlayout>
+					<separator spacing="20px"></separator>
+				</groupbox>
+				<button style="position: relative;left: 78%;margin-bottom:30px;"
+					label="Belépés" id="login" onClick="@command('doLogin')" />
+			</div>
+			<include id="dialoginclude" src="@load(vm.dialogPage)" />
+		</div>
+	</window>
+</zk>

@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<persistence xmlns="http://java.sun.com/xml/ns/persistence"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/persistence
+         http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd"
+	version="2.0">
+	<persistence-unit name="openjpa" transaction-type="RESOURCE_LOCAL">
+		<provider>org.apache.openjpa.persistence.PersistenceProviderImpl</provider>
+		<class>user.minicrm.zk.util.Role</class>
+		<class>user.minicrm.common.beans.CRMCustomer</class>
+		<class>user.minicrm.common.beans.CRMUser</class>
+		<class>user.minicrm.common.beans.CRMProject</class>
+		<class>user.minicrm.common.beans.CRMProjectIssue</class>
+		<class>user.minicrm.common.beans.CRMAttachment</class>
+		<properties>
+			<property name="openjpa.Log" value="DefaultLevel=WARN, Tool=INFO"/>
+			<property name="openjpa.jdbc.SynchronizeMappings" value="buildSchema(ForeignKeys=true)" />
+			<property name="openjpa.RuntimeUnenhancedClasses" value="supported" />
+			<property name="openjpa.ConnectionFactoryProperties" value="PrettyPrint=true, PrettyPrintLineLength=80"/>
+			<property name="openjpa.jdbc.SchemaFactory" value="native(foreignKeys=true)"/>
+            <property name="openjpa.Compatibility" value="storeMapCollectionInEntityAsBlob=true"/>
+		</properties>
+	</persistence-unit>
+</persistence>

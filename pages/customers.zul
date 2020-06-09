@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="ISO-8859-2"?>
+<?taglib uri="http://www.zkoss.org/dsp/web/core" prefix="c" ?>
+<?init class="user.minicrm.zk.util.AuthInitiator"?>
+<zk>
+	<vlayout
+		viewModel="@id('vm') @init('user.minicrm.zk.model.CustomersViewModel')">
+		<style src="/css/customers.css" />
+			<listbox height="700px" 
+				model="@bind(vm.customerList)"
+				selectedItem="@bind(vm.selectedCustomer)">
+				<auxhead>
+					<auxheader label="Ügyfelek" colspan="3"
+						align="center" />
+				</auxhead>
+				<listhead sizable="true">
+					<listheader label="Id" width="3%" />
+					<listheader label="Név" />
+					<listheader label="Cím" />
+				</listhead>
+				<template name="model">
+					<listitem>
+						<listcell style="text-align:center" label="${each.id}" />
+						<listcell style="text-align:left" label="${each.name}" />
+						<listcell style="text-align:left" label="${each.address}" />
+					</listitem>
+				</template>
+			</listbox>
+			<hlayout style="overflow: visible;">
+				<button label="Új ügyfél"
+					onClick="@command('showDialog', page='/pages/add_customer.zul')"
+					style="font-weight: bold;" />
+			</hlayout>
+		<include id="dialoginclude" src="@bind(vm.dialogPage)" />
+	</vlayout>
+</zk>

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="ISO-8859-2"?>
+<?taglib uri="http://www.zkoss.org/dsp/web/core" prefix="c" ?>
+<?init class="user.minicrm.zk.util.AuthInitiator"?>
+<zk>
+	<window title="Projekt módosítása" width="30%" visible="true" mode="modal" minimizable="false"
+		border="normal" position="center,center" closable="true"
+		action="show: slideDown;hide: slideUp"
+		onClose="@command('showDialog', page='/pages/empty.zul')">
+		<groupbox height="100%" width="100%" >
+			<hlayout >
+				<label hflex="1" value="Név:" style="text-align:center;" />
+				<textbox hflex="6" id="nev" 
+						constraint="${c:new('user.minicrm.zk.util.UserNameConstraint')}"
+						style="margin-bottom:1px;"
+						value="@load(pmv.selectedProject.name)@save(pmv.selectedProject.name,before='modifyProject')" />
+			</hlayout>
+			<separator spacing="10px"></separator>
+			<hlayout style="float:right;" spacing="10px">
+				<button label="Módosítás"
+					onClick="@command('modifyProject', page='/pages/empty.zul')"
+					style="font-weight: bold;" />
+				<button label="Mégsem"
+					onClick="@command('showDialog', page='/pages/empty.zul')"
+					style="font-weight: bold;" />
+			</hlayout>
+		</groupbox>
+	</window>
+</zk>

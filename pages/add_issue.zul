@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="ISO-8859-2"?>
+<?taglib uri="http://www.zkoss.org/dsp/web/core" prefix="c" ?>
+<?init class="user.minicrm.zk.util.AuthInitiator"?>
+<zk>
+	<window title="Új hozzászólás rögzítése" visible="true" mode="modal"
+		minimizable="false" border="normal" position="center,center" width="90%"
+		closable="true" action="show: slideDown;hide: slideUp"
+		onClose="@command('cancelNewIssue', page='/pages/empty.zul')">
+		<groupbox width="100%">
+			<hlayout>
+				<vlayout hflex="7" style="background: aliceblue;">
+					<separator spacing="20px"></separator>
+					<hlayout>
+						<label hflex="2" value="Rövid név:"
+							style="float:left;display: flex;font-size: 13px;margin-top: 5px;" />
+						<textbox style="padding:1px;margin-bottom:1px;"
+							hflex="9"
+							value="@save(pmv.newIssue.shortName,before='saveNewIssue')"
+							constraint="${c:new('user.minicrm.zk.util.UserNameConstraint')}" />
+					</hlayout>
+					<separator spacing="45px"></separator>
+					<hlayout>
+						<label hflex="2" value="Megjegyzés:"
+							style="float: left;display: flex;font-size: 13px;" />
+						<div hflex="9">
+							<textbox maxlength="1000" rows="20" cols="100" width="100%"
+								style="padding: 1px;margin-bottom:1px;"
+								value="@save(pmv.newIssue.description,before='saveNewIssue')"
+								constraint="${c:new('user.minicrm.zk.util.UserNameConstraint')}">
+							</textbox>
+						</div>
+					</hlayout>
+				</vlayout>
+				<separator orient="vertical" spacing="10px"></separator>
+				<vlayout hflex="5">
+					<listbox sclass="issue" height="530px"
+						model="@bind(pmv.newIssue.getAttachments())"
+						selectedItem="@bind(pmv.selectedAttachment)">
+						<auxhead>
+							<auxheader label="Csatolmányok" colspan="2"
+								align="center" />
+						</auxhead>
+						<listhead>
+							<listheader label="Id" width="7%" />
+							<listheader label="Név" />
+						</listhead>
+						<template name="model">
+							<listitem>
+								<listcell style="text-align:center" label="${each.id}" />
+								<listcell style="text-align:center" label="${each.name}">
+									<button
+										onClick='@command("downloadAttachment",attachment=each)'
+										style="float: right;font-size: 12px;padding: 0px 5px;"
+										label='' iconSclass='z-icon-download'>
+									</button>
+								</listcell>
+							</listitem>
+						</template>
+					</listbox>
+					<div sclass="footer"
+						style="background: aliceblue;display: flex;float: right;width:auto;">
+						<button label="Hozzáad"
+							upload="true"
+							onUpload="@command('saveNewAttachmentToNewIssue', page='/pages/empty.zul')"
+							disabled="@load(pmv.selectedCustomer eq null or pmv.selectedProject eq null)"
+							style="font-weight: bold; font-size:0.8em;float:right; margin-bottom:10px;">
+						</button>
+						<separator spacing="20px" orient="vertical"></separator>
+						<button label="Eltávolít"
+							onClick="@command('showPopup',page='/pages/delete_attachment_new.zul')"
+							disabled="@load(pmv.selectedCustomer eq null or pmv.selectedProject eq null or pmv.selectedAttachment eq null)"
+							style="font-weight: bold; font-size:0.8em;float:right; margin-bottom:10px;">
+						</button>
+					</div>
+				</vlayout>
+			</hlayout>
+			<separator spacing="30px"></separator>
+			<hlayout
+				style="float:right; background: aliceblue;padding:10px;"
+				spacing="10px">
+				<button label="Elment"
+					onClick="@command('saveNewIssue', page='/pages/empty.zul')"
+					style="font-weight: bold;" />
+				<button label="Mégsem"
+					onClick="@command('cancelNewIssue', page='/pages/empty.zul')"
+					style="font-weight: bold;" />
+			</hlayout>
+		</groupbox>
+		<include src="@bind(pmv.popupPage)" />
+	</window>
+</zk>

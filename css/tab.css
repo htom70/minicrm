@@ -1,0 +1,23 @@
+@charset "ISO-8859-2";
+
+.footercenter {
+	text-align: center;
+}
+
+.z-tabpanels {
+	background: #f1f1f1;
+}
+
+.z-tab-selected .z-tab-text, 
+.z-column .z-column-content, .z-tabbox-accordion .z-tab-text {
+	background: #0073aa;
+	background: -webkit-linear-gradient(left top, #0073aa, #028ed1);
+	background: -o-linear-gradient(bottom right, #0073aa, #028ed1);
+	background: -moz-linear-gradient(bottom right, #0073aa, #028ed1);
+	background: linear-gradient(to bottom right, #0073aa, #028ed1);
+	color: white;
+}
+
+.z-row-content {
+	background: aliceblue;
+}
