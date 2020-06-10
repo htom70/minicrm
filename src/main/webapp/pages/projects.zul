@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="ISO-8859-2"?>
+<?taglib uri="http://www.zkoss.org/dsp/web/core" prefix="c" ?>
+<?init class="minicrm.zk.util.AuthInitiator"?>
+<zk>
+	<vlayout height="100%" width="100%"
+		viewModel="@id('pmv') @init('minicrm.zk.model.ProjectsViewModel')">
+		<style src="/css/projects.css" />
+		<hlayout hflex="1">
+			<listbox hflex="1" height="700px" 
+				model="@bind(pmv.projectList)"
+				selectedItem="@bind(pmv.selectedProject)">
+				<auxhead>
+					<auxheader label="Projektek" colspan="2"
+						align="center" />
+				</auxhead>
+				<listhead sizable="true">
+					<listheader label="Id" width="10%" />
+					<listheader  label="Név" />
+				</listhead>
+				<template name="model">
+					<listitem>
+						<listcell label="${each.id}" />
+						<listcell style="text-align:left" label="${each.name}" />
+					</listitem>
+				</template>
+			</listbox>
+			<listbox hflex="2" height="700px"
+				model="@bind(pmv.selectedProject.issues)"
+				selectedItem="@bind(pmv.selectedIssue)">
+				<auxhead>
+					<auxheader label="Hozzászólások" colspan="4"
+						align="center" />
+				</auxhead>
+				<listhead sizable="true">
+					<listheader   label="Id" width="5%" />
+					<listheader  label="Név" />
+					<listheader   label="Dátum" />
+					<listheader  label="Készítő" />
+				</listhead>
+				<template name="model">
+					<listitem>
+						<listcell style="text-align:center" label="${each.id}" />
+						<listcell style="text-align:left" label="${each.shortName}" />
+						<listcell style="text-align:center" label="${each.createdDateTime}" />
+						<listcell style="text-align:left" label="${each.createdBy.fullName}" />
+					</listitem>
+				</template>
+			</listbox>
+		</hlayout>
+		<hlayout hflex="1">
+			<hlayout hflex="1">
+				<button label="Módosít"
+					onClick="@command('showDialog', page='/pages/modify_project.zul') "
+					disabled="@load(pmv.selectedProject eq null)"
+					style="font-weight: bold;">
+				</button>
+				<button label="Új felvitel"
+					onClick="@command('showDialog', page='/pages/add_project.zul')"
+					style="font-weight: bolder;" />
+			</hlayout>
+			<hlayout hflex="1">
+				<button label="Töröl"
+					onClick="@command('showDialog', page='/pages/delete_issue.zul') "
+					disabled="@load(pmv.selectedIssue eq null or vmm.loggedUser.isAdmin() eq false)"
+					style="font-weight: bold;">
+				</button>
+				<button label="Új hozzászólás"
+				disabled="@load(pmv.selectedProject eq null)"
+					onClick="@command('createNewIssue', page='/pages/add_issue.zul')"
+					style="font-weight: bolder;">
+				</button>
+				<button label="Részletek"
+					disabled="@load(pmv.selectedIssue eq null)"
+					onClick="@command('modifySelectedIssue', page='/pages/issue_details.zul')"
+					style="font-weight: bold;">
+				</button>
+			</hlayout>
+		</hlayout>
+		<include src="@bind(pmv.dialogPage)" />
+	</vlayout>
+</zk>

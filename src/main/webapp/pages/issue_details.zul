@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="ISO-8859-2"?>
+<?taglib uri="http://www.zkoss.org/dsp/web/core" prefix="c" ?>
+<?init class="minicrm.zk.util.AuthInitiator"?>
+<zk>
+	<window title="Hozzászólás részletezve" visible="true" mode="modal"
+		minimizable="false" border="normal" position="center,center" width="90%"
+		closable="true" action="show: slideDown;hide: slideUp"
+		onClose="@command('cancelModifiedIssue', page='/pages/empty.zul')">
+		<groupbox width="100%" style="background: aliceblue;">
+			<hlayout>
+				<vlayout hflex="7">
+					<separator spacing="20px"></separator>
+					<hlayout>
+						<label hflex="2" value="Rövid név:"
+							style="float: left;display: flex;font-size: 13px;margin-top: 5px;" />
+						<textbox hflex="10" id="name"
+							style="padding:1px;margin-bottom:1px;"
+							disabled="true"
+							value="@load(pmv.selectedIssue.shortName)@save(pmv.selectedIssue.shortName,before='saveModifiedIssue')" 
+							constraint="${c:new('minicrm.zk.util.UserNameConstraint')}" />
+					</hlayout>
+					<separator spacing="45px"></separator>
+					<hlayout>
+						<label hflex="2" value="Megjegyzés:"
+							style="float: left;display: flex;font-size: 13px;" />
+						<div hflex="10">
+							<textbox maxlength="1000" rows="20"
+								disabled="true" cols="70"
+								width="100%" style="padding: 1px;margin-bottom:1px;"
+								value="@load(pmv.selectedIssue.description)@save(pmv.selectedIssue.description,before='saveModifiedIssue')"
+								constraint="${c:new('minicrm.zk.util.UserNameConstraint')}">
+							</textbox>
+						</div>
+					</hlayout>
+				</vlayout>
+				<separator orient="vertical" spacing="10px"></separator>
+				<vlayout hflex="5">
+					<listbox sclass="issue" height="530px"
+						model="@bind(pmv.selectedIssue.getAttachments())"
+						selectedItem="@bind(pmv.selectedAttachment)">
+						<auxhead>
+							<auxheader label="Csatolmányok" colspan="2"
+								align="center" />
+						</auxhead>
+						<listhead>
+							<listheader label="Id" width="7%" />
+							<listheader label="Név" />
+						</listhead>
+						<template name="model">
+							<listitem >
+								<listcell style="text-align:center"  label="${each.id}" />
+								<listcell style="text-align:left" label="${each.name}">
+									<button 
+										onClick='@command("downloadAttachment",attachment=each)'
+										style="float: right;font-size: 12px;padding: 0px 5px;"
+										label='' iconSclass='z-icon-download'>
+									</button>
+								</listcell>
+							</listitem>
+						</template>
+					</listbox>
+					<div sclass="footer"
+						style="background: aliceblue;width:auto;">
+						<button label="Csatolmányok letöltése"
+							disabled="@load(pmv.selectedIssue.getAttachments().size() eq 0)"
+							visible="@load(vmm.loggedUser.isAdmin() eq true)"
+							onClick="@command('downloadAttachments')"
+							style="font-weight: bold; font-size:0.8em;float:left; margin-bottom:10px;">
+						</button>
+						<button label="Eltávolít"
+							onClick="@command('showPopup',page='/pages/delete_attachment_modified.zul')"
+							disabled="@load(pmv.selectedCustomer eq null or pmv.selectedProject eq null or pmv.selectedAttachment eq null)"
+							style="font-weight: bold; font-size:0.8em;float:right; margin-bottom:10px;">
+						</button>
+						<separator spacing="20px" orient="vertical"
+							style="float:right;">
+						</separator>
+						<button label="Hozzáad"
+							upload="true"
+							onUpload="@command('saveNewAttachmentToModifiedIssue', page='/pages/empty.zul')"
+							disabled="@load(pmv.selectedCustomer eq null or pmv.selectedProject eq null)"
+							style="font-weight: bold; font-size:0.8em;float:right; margin-bottom:10px;">
+						</button>
+					</div>
+				</vlayout>
+			</hlayout>
+			<separator spacing="30px"></separator>
+			<hlayout
+				style="float:right; background: aliceblue; padding:10px;"
+				spacing="10px">		
+				<button label="Elment"
+					onClick="@command('saveModifiedIssue', page='/pages/empty.zul')"
+					style="font-weight: bold;" />
+				<button label="Mégsem"
+					onClick="@command('cancelModifiedIssue', page='/pages/empty.zul')"
+					style="font-weight: bold;" />
+			</hlayout>
+		</groupbox>
+		<include src="@bind(pmv.popupPage)" />
+	</window>
+</zk>

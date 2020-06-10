@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="ISO-8859-2"?>
+<?taglib uri="http://www.zkoss.org/dsp/web/core" prefix="c" ?>
+<?init class="minicrm.zk.util.AuthInitiator"?>
+<zk>
+	<window title="Verzió" visible="true" mode="modal" width="200px" height="200px"
+		minimizable="false" border="normal" position="center,center"
+		closable="true" action="show: slideDown;hide: slideUp"
+		onClose="@command('showDialog', page='/pages/empty.zul')">
+		<label style="display: inline-block; float:none;
+    margin-left: 23%;
+    margin-top: 32%;
+    font-size: 14px;">Verziószám: 1.0</label>
+	</window>
+</zk>

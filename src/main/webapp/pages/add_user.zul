@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="ISO-8859-2"?>
+<?taglib uri="http://www.zkoss.org/dsp/web/core" prefix="c" ?>
+<?init class="minicrm.zk.util.AuthInitiator"?>
+<zk>
+	<window title="Új felhasználó rögzítése" visible="true" mode="modal"
+		width="50%" minimizable="false" border="normal"
+		position="center,center" closable="true"
+		action="show: slideDown;hide: slideUp"
+		onClose="@command('showDialog', page='/pages/empty.zul')">
+		<groupbox>
+			<hlayout style="padding:3px;">
+				<label hflex="1" value="Teljes Név: "
+					style="text-align:center!important;" />
+				<textbox hflex="3" value="@save(vm.newUser.fullName,before='saveUser')" constraint="${c:new('minicrm.zk.util.UserNameConstraint')}"/>
+			</hlayout>
+			<separator spacing="5px"></separator>
+			<hlayout style="padding:3px;">
+				<label hflex="1" value="Jelszó: "
+					style="text-align:center!important;" />
+				<textbox hflex="3" id="password" 
+					value="@save(vm.newUser.password,before='saveUser')" constraint="${c:new('minicrm.zk.util.UserPasswordConstraint')}" />
+			</hlayout>
+			<separator spacing="5px"></separator>
+			<hlayout style="padding:3px;">
+				<label hflex="1" value="Szerepkör: "
+					style="text-align:center!important;"/>
+				<combobox hflex="3" readonly="true" 
+					model="@load(vm.roleList)" onFulfill="" selectedItem="@bind(vm.newUser.role)" 
+					style="min-height:30px;">
+				</combobox>
+			</hlayout>
+			<separator spacing="5px"></separator>
+			<hlayout style="padding:3px;">
+				<label hflex="1" value="Email: "
+					style="text-align:center!important;" />
+				<textbox hflex="3" id="email" type="email"
+					value="@save(vm.newUser.email,before='saveUser')" constraint="${c:new('minicrm.zk.util.UserEmailConstraint')}"/>
+			</hlayout>
+			<separator spacing="5px"></separator>
+			<hlayout style="padding:3px;">
+				<label hflex="1" value="Ügyfél: "
+					style="text-align:center!important;" />
+				<combobox hflex="3" readonly="true" 
+					model="@load(vmm.customerList)"
+					selectedItem="@load(vmm.customerList.get(0))@save(vm.newUser.crmCustomer,before='saveUser')" />
+			</hlayout>
+			<separator spacing="30px"></separator>
+			<hlayout style="float:right;padding:3px;" spacing="10px">
+				<button label="Elment"
+					onClick="@command('saveUser', page='/pages/empty.zul')"
+					style="font-weight: bold;" />
+				<button label="Mégsem"
+					onClick="@command('showDialog', page='/pages/empty.zul')"
+					style="font-weight: bold;" />
+			</hlayout>
+		</groupbox>
+	</window>
+</zk>

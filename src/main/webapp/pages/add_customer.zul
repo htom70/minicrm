@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="ISO-8859-2"?>
+<?taglib uri="http://www.zkoss.org/dsp/web/core" prefix="c" ?>
+<?init class="minicrm.zk.util.AuthInitiator"?>
+<zk>
+	<window title="Új ügyfél rögzítése" visible="true" mode="modal" width="50%"
+		minimizable="false" border="normal" position="center,center" sclass="grad"
+		closable="true" action="show: slideDown;hide: slideUp"
+		onClose="@command('showDialog', page='/pages/empty.zul')">
+		<groupbox height="100%" width="100%">
+			<hlayout style="padding:10px;">
+				<label hflex="1" value="Név:"
+					style="text-align:center!important;" />
+				<textbox hflex="6" id="name"
+					value="@save(vm.newCustomer.name,before='saveCustomer')"
+					constraint="${c:new('minicrm.zk.util.UserNameConstraint')}" />
+			</hlayout>
+			<hlayout style="padding:10px;">
+				<label hflex="1" value="Cím:"
+					style="text-align:center!important;" />
+				<textbox hflex="6" id="address"
+					value="@save(vm.newCustomer.address,before='saveCustomer')"
+					constraint="${c:new('minicrm.zk.util.UserNameConstraint')}" />
+			</hlayout>
+			<separator spacing="30px"></separator>
+			<hlayout style="float:right;padding:10px;" spacing="10px">
+				<button label="Elment"
+					onClick="@command('saveCustomer', page='/pages/empty.zul') @global-command('addCustomer',customer=vm.selectedCustomer)"
+					style="font-weight: bold;" />
+				<button label="Mégsem"
+					onClick="@command('showDialog', page='/pages/empty.zul')"
+					style="font-weight: bold;" />
+			</hlayout>
+		</groupbox>
+	</window>
+</zk>
+
