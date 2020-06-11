@@ -1,7 +1,14 @@
 <?xml version="1.0" encoding="ISO-8859-2"?>
-<zk>
-<session-config>
-    <device-type>ajax</device-type>    
-    <timeout-uri></timeout-uri> 
-</session-config>
+<zk xmlns="http://www.zkoss.org/2005/zk/config" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.zkoss.org/2005/zk/config http://www.zkoss.org/2005/zk/config/zk.xsd">
+    <session-config>
+        <device-type>ajax</device-type>
+        <timeout-uri></timeout-uri>
+    </session-config>
+    <listener>
+        <listener-class>minicrm.listener.ZKContextListener</listener-class>
+    </listener>
+<!--    <listener>-->
+<!--        <listener-class>minicrm.listener.SessionListener</listener-class>-->
+<!--    </listener>-->
 </zk>

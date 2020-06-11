@@ -17,24 +17,22 @@ public class PropertyLoader {
         }
 
         InputStream input = null;
-        try {
+        try (InputStream inputstream = new FileInputStream(System.getProperty("propfile"))){
 //            input = session.getServletContext().getResourceAsStream("/minicrm/minicrm.properties");
 //            System.getProperties().load(new FileInputStream(System.getProperty("propertyfile")));
-            prop.load(new FileInputStream(System.getProperty("property_file_path")));
+//            input = session.getServletContext().getResourceAsStream("/config/minicrm.properties");
+//            input = session.getServletContext().getResourceAsStream("\\config\\minicrm.properties");
+//            prop.load(input);
+            String propName = System.getProperty("propfile");
+            LOGGER.debug("propName: " + propName);
+            LOGGER.debug("Inputstream: "+inputstream.toString());
+            prop.load(inputstream);
             prop.setProperty("javax.persistence.jdbc.driver", prop.getProperty("db.driver"));
             prop.setProperty("javax.persistence.jdbc.url", prop.getProperty("db.url"));
             prop.setProperty("javax.persistence.jdbc.user", prop.getProperty("db.userid"));
             prop.setProperty("javax.persistence.jdbc.password", prop.getProperty("db.password"));
         } catch (Exception ex) {
             LOGGER.error(ex);
-        } finally {
-            if (input != null) {
-                try {
-                    input.close();
-                } catch (Exception e) {
-                    LOGGER.error(e);
-                }
-            }
         }
         return prop;
     }
